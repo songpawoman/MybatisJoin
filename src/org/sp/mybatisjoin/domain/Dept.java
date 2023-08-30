@@ -1,10 +1,12 @@
 package org.sp.mybatisjoin.domain;
 
+import java.util.List;
 
 public class Dept {
-	private int deptno;
-	private String dname;
-	private String loc;
+	private int deptno;//10
+	private String dname; //어카운ㅌ딩
+	private String loc; //달라스
+	private List<Emp> empList; //select * from emp where deptno=?
 	
 	public int getDeptno() {
 		return deptno;
@@ -23,6 +25,12 @@ public class Dept {
 	}
 	public void setLoc(String loc) {
 		this.loc = loc;
+	}
+	public List<Emp> getEmpList() {
+		return empList;
+	}
+	public void setEmpList(List<Emp> empList) {
+		this.empList = empList;
 	}
 	
 	

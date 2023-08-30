@@ -6,6 +6,20 @@
 	<select id="selectAll" resultType="Dept">
 		select * from dept
 	</select>
+	
+	<!-- 부서의 모든 정보 가져오되, 사원까지도 끌고와 보자 -->
+	<resultMap type="Dept" id="deptEmpMap">
+		<id 			column="deptno" 	property="deptno"/>
+		<result 		column="dname"	property="dname"/>
+		<result 		column="loc"			property="loc"/>
+		<!-- 나와 다수의 자식레코드 관계를 1:多 collection -->
+		<collection column="deptno" property="empList" 
+			javaType="java.util.List" ofType="Emp" select="Emp.selectByDetpno"/>
+	</resultMap>
+	
+	<select id="selectAllWithEmp" resultMap="deptEmpMap">
+		select deptno, dname, loc from dept
+	</select>
 
 	<!-- 부서번호 조건으로 부서정보 가져오기  -->
 	<select id="select" resultType="Dept" parameterType="int">

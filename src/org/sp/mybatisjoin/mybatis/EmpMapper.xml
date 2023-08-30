@@ -22,6 +22,18 @@
 		select * from emp
 	</select>
 
+	
+	<!-- 해당 부서에 소속된 모든 사원 가져오기  -->
+	<select id="selectByDetpno" resultType="Emp" parameterType="int">
+		select * from emp 
+		where deptno=#{deptno}
+	</select>	
+	
+
 </mapper>
+
+
+
+
 
 
